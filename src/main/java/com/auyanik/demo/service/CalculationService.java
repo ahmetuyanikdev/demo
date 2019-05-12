@@ -11,6 +11,6 @@ public class CalculationService implements Calculation {
 	}
 
 	@Override public int multiply2Number(int a,int b) {
-		return 0;
+		return a*b;
 	}
 }
