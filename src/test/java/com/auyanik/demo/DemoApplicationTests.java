@@ -1,7 +1,7 @@
 package com.auyanik.demo;
 
-
 import com.auyanik.demo.reponse.Response;
+import com.auyanik.demo.restcontroller.CalculationServiceController;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,16 +21,28 @@ public class DemoApplicationTests {
 	@Autowired
 	RestTemplate restTemplate;
 
+	@Autowired
+	CalculationServiceController calculationServiceController;
+
 	@Test
 	public void contextLoads() {
 
 	}
 
 	@Test
-	public void getDataTest() {
+	public void getDataIT() {
 		Response response = restTemplate.getForObject("http://localhost:8080/hello/data", Response.class);
 		Assert.assertNotNull(response);
-		Assert.assertEquals(response.getData(),"data");
+		Assert.assertEquals(response.getData(), "data");
+	}
+
+	@Test
+	public void addToNumberIT() {
+		int a = 2;
+		int b = 3;
+		Integer result = restTemplate.getForObject("http://localhost:8080/calculate/add?a=" + a + "&" + "b=" + b, Integer.class);
+		Assert.assertNotNull(result);
+		Assert.assertEquals(result.intValue(),5);
 	}
 
 }
