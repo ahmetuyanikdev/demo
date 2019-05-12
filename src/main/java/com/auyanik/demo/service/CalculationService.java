@@ -13,4 +13,9 @@ public class CalculationService implements Calculation {
 	@Override public int multiply2Number(int a,int b) {
 		return a*b;
 	}
+
+	@Override public int extract2Number(int a, int b) {
+		return 0;
+	}
+
 }
